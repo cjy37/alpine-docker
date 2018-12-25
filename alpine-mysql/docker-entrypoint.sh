@@ -27,7 +27,7 @@ if [ "$1" = "mysqld" ]; then
         /usr/bin/mysql --protocol=socket --user root << EOSQL
             SET @@SESSION.SQL_LOG_BIN=0;
             CREATE USER 'root'@'%';
-            GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+            GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' identified by 'Shadow.2048';
             DROP DATABASE IF EXISTS test;
             FLUSH PRIVILEGES;
 EOSQL
